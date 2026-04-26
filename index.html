@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry 2026 — Complete Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #0f1525;
+    --bg3: #141a2e;
+    --card: #161d33;
+    --card2: #1c2540;
+    --accent: #4fc3f7;
+    --accent2: #81d4fa;
+    --green: #69f0ae;
+    --amber: #ffd740;
+    --pink: #f48fb1;
+    --purple: #ce93d8;
+    --red: #ef9a9a;
+    --text: #e8eaf6;
+    --text2: #9fa8da;
+    --text3: #7986cb;
+    --border: rgba(79,195,247,0.15);
+    --border2: rgba(79,195,247,0.25);
+    --glow: rgba(79,195,247,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(79,195,247,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(79,195,247,0.1);
+    border: 1px solid var(--border2);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text2);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-n {
+    font-family: 'DM Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat-l {
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── QUICK NOTES BANNER ── */
+  .quick-notes {
+    background: linear-gradient(135deg, rgba(105,240,174,0.08), rgba(79,195,247,0.08));
+    border-top: 1px solid rgba(105,240,174,0.2);
+    border-bottom: 1px solid rgba(105,240,174,0.2);
+    padding: 28px 40px;
+  }
+
+  .qn-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .qn-title::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--green);
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .note-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(105,240,174,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .note-card:hover {
+    border-color: rgba(105,240,174,0.35);
+    background: rgba(105,240,174,0.04);
+  }
+
+  .note-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(105,240,174,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .note-text {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+
+  .note-text strong {
+    color: var(--green);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    padding: 30px 0;
+  }
+
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+  .sidebar-section {
+    padding: 0 20px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 12px 20px 6px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    font-size: 13.5px;
+    color: var(--text2);
+    text-decoration: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar-link:hover {
+    color: var(--accent);
+    background: var(--glow);
+    border-left-color: var(--accent);
+  }
+
+  .sidebar-link.active {
+    color: var(--accent);
+    background: rgba(79,195,247,0.1);
+    border-left-color: var(--accent);
+    font-weight: 500;
+  }
+
+  .sidebar-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    padding: 40px 48px;
+    min-height: 100vh;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 64px;
+    display: none;
+  }
+
+  .section.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .section-header p {
+    font-size: 14px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  /* ── TOPIC CARD ── */
+  .topic-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .topic-card:hover {
+    border-color: var(--border2);
+  }
+
+  .topic-card h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .topic-card h3::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 18px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .topic-card p {
+    font-size: 14.5px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .topic-card p:last-child { margin-bottom: 0; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: rgba(79,195,247,0.06);
+    border: 1px solid rgba(79,195,247,0.18);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 13.5px;
+    color: var(--accent);
+    line-height: 1.8;
+  }
+
+  .formula-box .formula-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* ── REACTION BOX ── */
+  .reaction {
+    background: rgba(206,147,216,0.07);
+    border: 1px solid rgba(206,147,216,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--purple);
+    line-height: 1.9;
+  }
+
+  .reaction .rxn-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    color: rgba(206,147,216,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .rxn-arrow {
+    color: var(--amber);
+    margin: 0 6px;
+  }
+
+  /* ── ALERT / KEY FACT ── */
+  .key-fact {
+    background: rgba(255,215,64,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: rgba(255,215,64,0.9);
+    line-height: 1.6;
+  }
+
+  /* ── TABLE ── */
+  .chem-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13.5px;
+  }
+
+  .chem-table th {
+    background: rgba(79,195,247,0.1);
+    color: var(--accent);
+    font-weight: 500;
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .chem-table td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  .chem-table tr:hover td {
+    background: var(--glow);
+  }
+
+  .chem-table td:first-child {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── LIST ── */
+  .chem-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+
+  .chem-list li {
+    padding: 7px 0 7px 22px;
+    font-size: 14px;
+    color: var(--text2);
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.55;
+  }
+
+  .chem-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* ── TWO COLS ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 14px 0;
+  }
+
+  .col-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .col-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .col-card p, .col-card li {
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  /* ── VALENCE TABLE ── */
+  .valence-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+
+  .valence-pill {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 70px;
+  }
+
+  .valence-pill span {
+    font-size: 10px;
+    color: var(--text3);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* ── PAGE VIEWER ── */
+  .pdf-viewer {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .pdf-toolbar {
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  .pdf-toolbar .pages-info {
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+  }
+
+  /* ── MOBILE NAV ── */
+  .mobile-topbar {
+    display: none;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-topbar .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #fff;
+  }
+
+  .mobile-select {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .hi-blue { color: var(--accent); }
+  .hi-green { color: var(--green); }
+  .hi-amber { color: var(--amber); }
+  .hi-pink { color: var(--pink); }
+  .hi-purple { color: var(--purple); }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin: 0 2px;
+  }
+
+  .tag-blue { background: rgba(79,195,247,0.12); color: var(--accent); border: 1px solid rgba(79,195,247,0.25); }
+  .tag-green { background: rgba(105,240,174,0.12); color: var(--green); border: 1px solid rgba(105,240,174,0.25); }
+  .tag-amber { background: rgba(255,215,64,0.1); color: var(--amber); border: 1px solid rgba(255,215,64,0.2); }
+  .tag-pink { background: rgba(244,143,177,0.1); color: var(--pink); border: 1px solid rgba(244,143,177,0.2); }
+  .tag-purple { background: rgba(206,147,216,0.1); color: var(--purple); border: 1px solid rgba(206,147,216,0.2); }
+
+  /* ── STRUCTURE DIAGRAM ── */
+  .struct-diagram {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 2;
+    margin: 14px 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .mobile-topbar { display: flex; }
+    .content { padding: 24px 20px; }
+    .two-col { grid-template-columns: 1fr; }
+    .hero { padding: 50px 20px 40px; }
+    .quick-notes { padding: 20px; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE TOPBAR -->
+<div class="mobile-topbar">
+  <span class="logo">Organic Chem ⚗</span>
+  <select class="mobile-select" onchange="navigate(this.value)">
+    <option value="intro">Introduction</option>
+    <option value="structure">Structure & Bonding</option>
+    <option value="naming">IUPAC Naming</option>
+    <option value="alkanes">Alkanes</option>
+    <option value="alkenes">Alkenes</option>
+    <option value="alkynes">Alkynes</option>
+    <option value="cyclo">Cycloalkanes</option>
+    <option value="halogen">Halogenated Compounds</option>
+    <option value="alcohols">Alcohols & Ethers</option>
+    <option value="phenols">Phenols</option>
+    <option value="aldehydes">Aldehydes & Ketones</option>
+    <option value="acids">Carboxylic Acids</option>
+    <option value="esters">Esters</option>
+    <option value="amines">Amines</option>
+    <option value="aspirin">Aspirin</option>
+  </select>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">⚗ Organic Chemistry 2026</div>
+  <h1>The Complete<br><span>Study Notes</span></h1>
+  <p class="hero-sub">192 pages · Full curriculum · Organized &amp; searchable</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-n">192</span><span class="stat-l">Pages</span></div>
+    <div class="stat"><span class="stat-n">15</span><span class="stat-l">Topics</span></div>
+    <div class="stat"><span class="stat-n">60+</span><span class="stat-l">Reactions</span></div>
+    <div class="stat"><span class="stat-n">2026</span><span class="stat-l">Edition</span></div>
+  </div>
+</div>
+
+<!-- QUICK IMPORTANT NOTES -->
+<div class="quick-notes">
+  <div class="qn-title">★ Most Important Notes to Remember</div>
+  <div class="notes-grid">
+    <div class="note-card">
+      <div class="note-icon">🔬</div>
+      <div class="note-text"><strong>Wohler's Experiment</strong>Urea was the FIRST organic compound made in a lab (from inorganic material) — destroyed Vital Force Theory</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">⚡</div>
+      <div class="note-text"><strong>Markovnikov's Rule</strong>When HX added to asymmetric alkene: H+ attaches to C that is richest in H (most H atoms)</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">🧪</div>
+      <div class="note-text"><strong>Bromine Water Test</strong>Br₂/CCl₄ — Alkanes: remain red. Alkenes/Alkynes: decolorize (disappear). Key distinguish test!</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">📏</div>
+      <div class="note-text"><strong>Numbering Rule</strong>Number chain from both sides, choose the side giving the LEAST sum of branch positions</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">💧</div>
+      <div class="note-text"><strong>Methane Collection</strong>Collected by downward displacement of water (slightly soluble + lower density than water)</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">🔴</div>
+      <div class="note-text"><strong>Phenol Acidity</strong>Phenols are acidic (pH &lt; 7), turn litmus red. Called Carbolic Acid. React with Na but NOT NaOH</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">💊</div>
+      <div class="note-text"><strong>Aspirin in Stomach</strong>Undergoes acidic hydrolysis → Salicylic acid + Acetic acid. Can cause ulcers — take after meals!</div>
+    </div>
+    <div class="note-card">
+      <div class="note-icon">🏁</div>
+      <div class="note-text"><strong>Reactivity Order (Alkynes &gt; Alkenes &gt; Alkanes)</strong>Triple bond most reactive, then double, then single — due to π electrons available</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-label">Foundations</div>
+    <a class="sidebar-link active" onclick="navigate('intro')"><div class="sidebar-dot"></div>Introduction</a>
+    <a class="sidebar-link" onclick="navigate('structure')"><div class="sidebar-dot"></div>Structure &amp; Bonding</a>
+    <a class="sidebar-link" onclick="navigate('naming')"><div class="sidebar-dot"></div>IUPAC Naming</a>
+
+    <div class="sidebar-label">Hydrocarbons</div>
+    <a class="sidebar-link" onclick="navigate('alkanes')"><div class="sidebar-dot"></div>Alkanes</a>
+    <a class="sidebar-link" onclick="navigate('alkenes')"><div class="sidebar-dot"></div>Alkenes</a>
+    <a class="sidebar-link" onclick="navigate('alkynes')"><div class="sidebar-dot"></div>Alkynes</a>
+    <a class="sidebar-link" onclick="navigate('cyclo')"><div class="sidebar-dot"></div>Cycloalkanes</a>
+
+    <div class="sidebar-label">Derivatives</div>
+    <a class="sidebar-link" onclick="navigate('halogen')"><div class="sidebar-dot"></div>Halogenated Cpds</a>
+    <a class="sidebar-link" onclick="navigate('alcohols')"><div class="sidebar-dot"></div>Alcohols &amp; Ethers</a>
+    <a class="sidebar-link" onclick="navigate('phenols')"><div class="sidebar-dot"></div>Phenols</a>
+    <a class="sidebar-link" onclick="navigate('aldehydes')"><div class="sidebar-dot"></div>Aldehydes &amp; Ketones</a>
+    <a class="sidebar-link" onclick="navigate('acids')"><div class="sidebar-dot"></div>Carboxylic Acids</a>
+    <a class="sidebar-link" onclick="navigate('esters')"><div class="sidebar-dot"></div>Esters</a>
+    <a class="sidebar-link" onclick="navigate('amines')"><div class="sidebar-dot"></div>Amines</a>
+
+    <div class="sidebar-label">Applications</div>
+    <a class="sidebar-link" onclick="navigate('aspirin')"><div class="sidebar-dot"></div>Aspirin ★</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ══ SECTION: INTRODUCTION ══ -->
+    <div class="section active" id="sec-intro">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(79,195,247,0.1); border:1px solid rgba(79,195,247,0.2);">🧬</div>
+        <div>
+          <h2>Introduction</h2>
+          <p>History of Organic Chemistry &amp; Classification of Compounds</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Berzelius — Classification by Origin</h3>
+        <p>Berzelius classified compounds according to their origin into two groups:</p>
+        <div class="two-col">
+          <div class="col-card">
+            <h4>🌿 Organic Compounds</h4>
+            <p>Compounds produced <em>inside living organism cells</em>. Examples: Acetic acid (CH₃COOH) — from vinegar bacteria, Formic acid (HCOOH) — from crushing ants</p>
+          </div>
+          <div class="col-card">
+            <h4>🪨 Inorganic Compounds</h4>
+            <p>Compounds derived from <em>solid parts of Earth's crust</em>. Named depending on their structure, not origin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Vital Force Theory</h3>
+        <p>Organic compounds can only be produced in living organism cells by the effect of <span class="hi-pink">biological vital forces</span> — and it was believed impossible to produce them in laboratories.</p>
+        <div class="key-fact">⭐ Compounds were named depending on the <strong>origin of their sources</strong> (e.g. Acetic acid → Acetum = oxidation by vinegar bacteria; Formic acid → Formica = crushing of ants)</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Wohler — Destruction of Vital Force Theory</h3>
+        <p>Friedrich Wöhler destroyed the Vital Force Theory by producing an organic substance in the laboratory from inorganic substances:</p>
+        <div class="reaction">
+          <span class="rxn-label">Reaction 1 — Forming Ammonium Cyanate</span>
+          AgCNO + NH₄Cl <span class="rxn-arrow">→</span> AgCl + NH₄CNO<br>
+          (Silver Cyanate + Ammonium Chloride → Ammonium Cyanate)
+        </div>
+        <div class="reaction">
+          <span class="rxn-label">Reaction 2 — Rearrangement to Urea</span>
+          NH₄CNO <span class="rxn-arrow">—Δ→</span> H₂N-CO-NH₂<br>
+          (Ammonium Cyanate → <strong>Urea</strong>)
+        </div>
+        <div class="key-fact">⭐ Urea (NH₂-CO-NH₂ = CH₄ON₂) is the FIRST organic compound produced in a laboratory.<br>⭐ Urea is a fundamental substance in all mammalian urine.</div>
+        <p>After Wöhler's discovery, compounds were renamed depending on their <span class="hi-blue">structure</span> instead of origin: CH₃COOH = Ethanoic acid, HCOOH = Methanoic acid</p>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: STRUCTURE & BONDING ══ -->
+    <div class="section" id="sec-structure">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(206,147,216,0.1); border:1px solid rgba(206,147,216,0.2);">⚛️</div>
+        <div>
+          <h2>Structure &amp; Bonding</h2>
+          <p>Valences, types of carbon, homologous series</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Valences of Elements in Organic Compounds</h3>
+        <p>Elements in organic compounds have only <span class="hi-amber">one valence</span>:</p>
+        <div class="valence-row">
+          <div class="valence-pill">C<br><span>Tetravalent (4)</span><br>—C— &gt;C= —C≡</div>
+          <div class="valence-pill">N<br><span>Trivalent (3)</span><br>—N— —N= N≡</div>
+          <div class="valence-pill">O<br><span>Divalent (2)</span><br>—O— O=</div>
+          <div class="valence-pill">H<br><span>Monovalent (1)</span><br>H—</div>
+          <div class="valence-pill">Halogens<br><span>Monovalent (1)</span><br>Br— Cl— I— F—</div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Types of Organic Compounds</h3>
+        <div class="two-col">
+          <div class="col-card">
+            <h4>🔵 Hydrocarbons</h4>
+            <p>Contain <strong>only C and H</strong></p>
+            <div class="formula-box">C₆H₆ — Benzene<br>CH₄ — Methane</div>
+          </div>
+          <div class="col-card">
+            <h4>🟡 Hydrocarbon Derivatives</h4>
+            <p>Contain C &amp; H plus <strong>other elements</strong> (O, N, S, Cl...)</p>
+            <div class="formula-box">CH₃COOH — Acetic acid<br>C₂H₅OH — Ethyl alcohol</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Types of Carbon Atoms</h3>
+        <table class="chem-table">
+          <tr><th>Type</th><th>Attached to</th><th>Structure</th></tr>
+          <tr><td>Primary (1°)</td><td>1 carbon atom</td><td>C—C</td></tr>
+          <tr><td>Secondary (2°)</td><td>2 carbon atoms</td><td>C—C—C</td></tr>
+          <tr><td>Tertiary (3°)</td><td>3 carbon atoms</td><td>C—C(—C)—C</td></tr>
+          <tr><td>Quaternary (4°)</td><td>4 carbon atoms</td><td>C—C(—C)(—C)—C</td></tr>
+        </table>
+        <div class="key-fact">⭐ Example: 2,2-dimethylpentane has 4 Primary C, 2 Secondary C, 1 Quaternary C = 3 types total</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Homologous Series</h3>
+        <p>A group of organic compounds that are <span class="hi-green">similar</span> in some properties and <span class="hi-pink">different</span> in others:</p>
+        <div class="two-col">
+          <div class="col-card">
+            <h4>Similar in:</h4>
+            <ul class="chem-list">
+              <li>General formula (general law)</li>
+              <li>Chemical properties</li>
+              <li>Functional group</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <h4>Different in:</h4>
+            <ul class="chem-list">
+              <li>Molecular formula</li>
+              <li>Structural formula</li>
+              <li>Molar mass</li>
+            </ul>
+          </div>
+        </div>
+        <div class="key-fact">⭐ Each compound in the series exceeds the previous compound by —CH₂ (methylene group) = 14 g/mol</div>
+        <p><strong>Alcohols Homologous Series:</strong></p>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th></tr>
+          <tr><td>Methanol</td><td>CH₃OH</td></tr>
+          <tr><td>Ethanol</td><td>C₂H₅OH</td></tr>
+          <tr><td>Propanol</td><td>C₃H₇OH</td></tr>
+          <tr><td>Butanol</td><td>C₄H₉OH</td></tr>
+        </table>
+        <div class="formula-box"><span class="formula-label">General law — Alcohols</span>CₙH₂ₙ₊₂O &nbsp;&nbsp; Functional group: —OH</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: IUPAC NAMING ══ -->
+    <div class="section" id="sec-naming">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(255,215,64,0.1); border:1px solid rgba(255,215,64,0.2);">📝</div>
+        <div>
+          <h2>IUPAC Naming</h2>
+          <p>Rules for naming organic compounds systematically</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Root Names (Parent Chain)</h3>
+        <table class="chem-table">
+          <tr><th>Carbons</th><th>Root</th><th>Alkane</th><th>Alkene</th><th>Alkyne</th></tr>
+          <tr><td>1</td><td>Meth-</td><td>Methane</td><td>—</td><td>—</td></tr>
+          <tr><td>2</td><td>Eth-</td><td>Ethane</td><td>Ethene</td><td>Ethyne</td></tr>
+          <tr><td>3</td><td>Prop-</td><td>Propane</td><td>Propene</td><td>Propyne</td></tr>
+          <tr><td>4</td><td>But-</td><td>Butane</td><td>Butene</td><td>Butyne</td></tr>
+          <tr><td>5</td><td>Pent-</td><td>Pentane</td><td>Pentene</td><td>Pentyne</td></tr>
+          <tr><td>6</td><td>Hex-</td><td>Hexane</td><td>Hexene</td><td>Hexyne</td></tr>
+          <tr><td>7</td><td>Hept-</td><td>Heptane</td><td>—</td><td>—</td></tr>
+          <tr><td>8</td><td>Oct-</td><td>Octane</td><td>—</td><td>—</td></tr>
+        </table>
+      </div>
+
+      <div class="topic-card">
+        <h3>Steps for Naming</h3>
+        <ul class="chem-list">
+          <li><strong>Step 1 — Find main chain:</strong> Longest continuous carbon chain (the parent chain)</li>
+          <li><strong>Step 2 — Numbering:</strong> Number from both sides, choose the side giving the LEAST sum of branch positions</li>
+          <li><strong>Step 3 — Name branches:</strong> Use prefixes: di, tri, tetra for multiples of same branch</li>
+          <li><strong>Step 4 — Alphabetical order:</strong> When two different branches at same sum, give least alphabetical branch the least number</li>
+          <li><strong>Step 5 — Assemble:</strong> (position-branch)- ... -parent chain + suffix</li>
+        </ul>
+
+        <div class="key-fact">⭐ Numbering Rule: When numbering gives equal sums from both sides, give the least alphabetical branch the least number</div>
+
+        <p style="margin-top:14px;"><strong>Common Branch Names:</strong></p>
+        <table class="chem-table">
+          <tr><th>Group</th><th>Name</th><th>Formula</th></tr>
+          <tr><td>Methyl</td><td>-methyl</td><td>—CH₃</td></tr>
+          <tr><td>Ethyl</td><td>-ethyl</td><td>—C₂H₅</td></tr>
+          <tr><td>Propyl</td><td>-propyl</td><td>—C₃H₇</td></tr>
+          <tr><td>Chloro</td><td>-chloro</td><td>—Cl</td></tr>
+          <tr><td>Bromo</td><td>-bromo</td><td>—Br</td></tr>
+        </table>
+
+        <p style="margin-top:14px;"><strong>Examples:</strong></p>
+        <ul class="chem-list">
+          <li>CH₃(CH₂CH₃)₂(CH₂)₂CH₃ → <span class="hi-accent">3-Ethylhexane</span></li>
+          <li>CH₃CH(CH₃)(CH₂)₂(CCl₃) → <span class="hi-blue">1,1,1-Trichloro-5-methylhexane</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ALKANES ══ -->
+    <div class="section" id="sec-alkanes">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(105,240,174,0.1); border:1px solid rgba(105,240,174,0.2);">🔗</div>
+        <div>
+          <h2>Alkanes</h2>
+          <p>Saturated hydrocarbons — CₙH₂ₙ₊₂</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Properties</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙ₊₂ &nbsp;&nbsp;&nbsp; Functional group: C—H (single bond)</div>
+        <ul class="chem-list">
+          <li>All bonds are single bonds (saturated)</li>
+          <li>Low reactivity — no functional group for easy reactions</li>
+          <li>Boiling point increases with molecular mass</li>
+          <li>Insoluble in water, soluble in organic solvents</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Preparation of Methane (CH₄)</h3>
+        <p><strong>Lab preparation:</strong> Heating Sodium Acetate + Soda Lime</p>
+        <div class="reaction">
+          <span class="rxn-label">Preparation Reaction</span>
+          CH₃COONa + NaOH <span class="rxn-arrow">—CaO/Δ→</span> CH₄ + Na₂CO₃<br>
+          Sodium acetate + Soda lime → Methane + Sodium carbonate
+        </div>
+        <div class="key-fact">⭐ Methane is collected by DOWNWARD DISPLACEMENT OF WATER because:<br>• CH₄ is slightly soluble in water<br>• CH₄ has lower density than water<br>• Collected methane is "wet methane"<br>• To get DRY methane: replace water bath with mercury bath</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Chemical Reactions of Alkanes</h3>
+        <p><strong>1. Combustion (Complete):</strong></p>
+        <div class="reaction">CH₄ + 2O₂ <span class="rxn-arrow">→</span> CO₂ + 2H₂O</div>
+
+        <p><strong>2. Substitution Halogenation (UV light):</strong></p>
+        <div class="reaction">
+          CH₄ + Cl₂ <span class="rxn-arrow">—UV→</span> CH₃Cl + HCl &nbsp;&nbsp; (Chloromethane)<br>
+          CH₄ + 4Cl₂ <span class="rxn-arrow">—UV→</span> CCl₄ + 4HCl &nbsp;&nbsp; (Carbon tetrachloride)
+        </div>
+
+        <p><strong>3. Uses of Alkanes:</strong></p>
+        <ul class="chem-list">
+          <li>Fuel (natural gas, LPG) — Propane in red cylinder (cold countries), Butane in blue cylinder (hot countries)</li>
+          <li>Production of reducing agent (water gas H₂)</li>
+          <li>Production of divided carbon (carbon black)</li>
+          <li>Production of halogenated alkanes (CHCl₃ — used in anesthesia)</li>
+        </ul>
+
+        <div class="key-fact">⭐ Chloroform (CHCl₃): used in anesthesia but NOT SAFE — requires adjusted dose per patient or will cause death. Now replaced by Halothane (CHBrCl–CF₃) which is safer.</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ALKENES ══ -->
+    <div class="section" id="sec-alkenes">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(79,195,247,0.1); border:1px solid rgba(79,195,247,0.2);">⚡</div>
+        <div>
+          <h2>Alkenes</h2>
+          <p>Unsaturated hydrocarbons with double bond — CₙH₂ₙ</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Properties</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙ &nbsp;&nbsp;&nbsp; Functional group: C=C (double bond)</div>
+        <ul class="chem-list">
+          <li>More reactive than alkanes (π bond available for reactions)</li>
+          <li>Undergo addition reactions (not substitution)</li>
+          <li>Decolorize bromine water (Br₂/CCl₄) — key identification test</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Types of Alkenes</h3>
+        <div class="two-col">
+          <div class="col-card">
+            <h4>🔵 Symmetric Alkene</h4>
+            <p>Alkene where C atoms of double bond have the <strong>same number of H atoms</strong></p>
+            <div class="formula-box">CH₂=CH₂ (ethene)<br>CH₃CH=CHCH₃</div>
+          </div>
+          <div class="col-card">
+            <h4>🟡 Asymmetric Alkene</h4>
+            <p>Alkene where C atoms of double bond have <strong>different numbers of H atoms</strong></p>
+            <div class="formula-box">CH₃CH=CH₂<br>CH₃CH₂CH=CH₂</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Chemical Reactions of Alkenes</h3>
+        <p><strong>1. Addition of Halogens (X₂):</strong></p>
+        <div class="reaction">
+          CH₂=CH₂ + Br₂ <span class="rxn-arrow">→</span> CH₂Br—CH₂Br<br>
+          (Ethene + Bromine → 1,2-dibromoethane)
+        </div>
+
+        <p><strong>2. Addition of Hydrogen Halide (HX):</strong> HBr, HI, HF, HCl</p>
+        <div class="key-fact">⭐ MARKOVNIKOV'S RULE: When adding asymmetric reagent (HX, H₂O, H₂SO₄) to asymmetric alkene:<br>→ The POSITIVE part of reagent (H⁺) attaches to the Carbon of double bond that is RICHEST IN H atoms</div>
+
+        <p><strong>3. Addition of Water (H₂O):</strong></p>
+        <div class="reaction">CH₂=CH₂ + H₂O <span class="rxn-arrow">—H₂SO₄→</span> CH₃CH₂OH (Ethanol)</div>
+
+        <p><strong>4. Hydrogenation:</strong></p>
+        <div class="reaction">CH₂=CH₂ + H₂ <span class="rxn-arrow">—Ni/Pt/Δ→</span> CH₃-CH₃ (Ethane)</div>
+
+        <p><strong>5. Test with Bromine Water:</strong></p>
+        <div class="key-fact">⭐ Alkenes DECOLORIZE bromine water (Br₂/CCl₄) — color disappears from red/brown<br>Alkanes: remain red (no reaction with Br₂/CCl₄)</div>
+
+        <p><strong>Vinyl (Ethenyl) Derivatives from Ethene:</strong></p>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th></tr>
+          <tr><td>Vinyl chloride</td><td>CH₂=CH—Cl</td></tr>
+          <tr><td>Vinyl bromide</td><td>CH₂=CH—Br</td></tr>
+          <tr><td>Vinyl alcohol</td><td>CH₂=CH—OH</td></tr>
+          <tr><td>Vinyl acetylene</td><td>CH₂=CH—C≡CH</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ALKYNES ══ -->
+    <div class="section" id="sec-alkynes">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(244,143,177,0.1); border:1px solid rgba(244,143,177,0.2);">💫</div>
+        <div>
+          <h2>Alkynes</h2>
+          <p>Unsaturated hydrocarbons with triple bond — CₙH₂ₙ₋₂</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Properties</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙ₋₂ &nbsp;&nbsp;&nbsp; Functional group: C≡C (triple bond)</div>
+        <div class="key-fact">⭐ Reactivity Order: Alkynes &gt; Alkenes &gt; Alkanes<br>(More π bonds = more reactive)</div>
+        <ul class="chem-list">
+          <li>Two π bonds available for addition reactions</li>
+          <li>Most reactive of the three hydrocarbon classes</li>
+          <li>Decolorize bromine water (like alkenes)</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Preparation of Acetylene (Ethyne)</h3>
+        <div class="reaction">
+          CaC₂ + 2H₂O <span class="rxn-arrow">→</span> HC≡CH + Ca(OH)₂<br>
+          Calcium carbide + Water → Acetylene + Calcium hydroxide
+        </div>
+        <p>Acetylene is used in welding (oxy-acetylene torch).</p>
+      </div>
+
+      <div class="topic-card">
+        <h3>Reactivity Comparison Table</h3>
+        <table class="chem-table">
+          <tr><th>Property</th><th>Alkane</th><th>Alkene</th><th>Alkyne</th></tr>
+          <tr><td>Formula</td><td>CₙH₂ₙ₊₂</td><td>CₙH₂ₙ</td><td>CₙH₂ₙ₋₂</td></tr>
+          <tr><td>Bond type</td><td>Single (σ)</td><td>Double (σ+π)</td><td>Triple (σ+2π)</td></tr>
+          <tr><td>Br₂/CCl₄ test</td><td>Stays red</td><td>Decolorizes</td><td>Decolorizes</td></tr>
+          <tr><td>Reaction type</td><td>Substitution</td><td>Addition</td><td>Addition</td></tr>
+          <tr><td>Reactivity</td><td>Low</td><td>Medium</td><td>High</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: CYCLOALKANES ══ -->
+    <div class="section" id="sec-cyclo">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(206,147,216,0.1); border:1px solid rgba(206,147,216,0.2);">⭕</div>
+        <div>
+          <h2>Cycloalkanes &amp; Benzene</h2>
+          <p>Ring-structure hydrocarbons</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Cycloalkanes</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙ &nbsp;&nbsp;&nbsp; Same as Alkenes — distinguish by structure!</div>
+        <ul class="chem-list">
+          <li>Same general formula as alkenes (CₙH₂ₙ) but different structure</li>
+          <li>Ring structure — no double bonds</li>
+          <li>More stable than open-chain alkenes</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Benzene — Aromatic Ring</h3>
+        <div class="formula-box"><span class="formula-label">Molecular formula</span>C₆H₆ &nbsp;&nbsp;&nbsp; Structural: hexagonal ring with alternating double bonds</div>
+        <p><strong>Preparation of Cyclohexane from Hexane:</strong></p>
+        <div class="reaction">
+          C₆H₁₄ <span class="rxn-arrow">—Pt/Δ Catalytic Reforming→</span> ⬡ + 4H₂<br>
+          Hexane → Cyclohexane + hydrogen
+        </div>
+        <p><strong>Reactions of Benzene:</strong></p>
+        <ul class="chem-list">
+          <li><strong>Hydrogenation:</strong> ⬡ + 3H₂ → Cyclohexane (Ni/Pt, Δ)</li>
+          <li><strong>Halogenation (UV):</strong> C₆H₆ + 3Cl₂ → C₆H₆Cl₆ (Gamexane — Insecticide!)</li>
+          <li><strong>Nitration:</strong> C₆H₆ + HNO₃ → C₆H₅NO₂ (Nitrobenzene — used in explosive TNT)</li>
+        </ul>
+        <div class="key-fact">⭐ Gamexane (C₆H₆Cl₆) is used as an INSECTICIDE<br>⭐ Methane + 4Cl₂ (UV) → CCl₄ (Carbon tetrachloride)</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: HALOGENATED COMPOUNDS ══ -->
+    <div class="section" id="sec-halogen">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(239,154,154,0.1); border:1px solid rgba(239,154,154,0.2);">⚗️</div>
+        <div>
+          <h2>Halogenated Compounds</h2>
+          <p>Alkyl halides and their derivatives</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Formulas</h3>
+        <table class="chem-table">
+          <tr><th>Class</th><th>Formula</th><th>Example</th></tr>
+          <tr><td>Chloroalkane</td><td>CₙH₂ₙ₊₁Cl</td><td>CH₃Cl — Chloromethane</td></tr>
+          <tr><td>Dichloroalkane</td><td>CₙH₂ₙCl₂</td><td>C₂H₄Cl₂ — Dichloroethane</td></tr>
+          <tr><td>Chloroalkene</td><td>CₙH₂ₙ₋₁Cl</td><td>C₃H₅Cl — Chloropropene</td></tr>
+          <tr><td>Chlorocycloalkane</td><td>CₙH₂ₙ₋₁Cl</td><td>C₃H₅Cl — Chlorocyclopropane</td></tr>
+        </table>
+        <div class="key-fact">⭐ Same molecular formula CₙH₂ₙ₋₁Cl can be: alkene derivative OR cycloalkane derivative — distinguish by structural formula!</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Important Halogenated Compounds</h3>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th><th>Use</th></tr>
+          <tr><td>Chloromethane</td><td>CH₃Cl</td><td>Refrigerant</td></tr>
+          <tr><td>Chloroform</td><td>CHCl₃</td><td>Anesthesia (old, unsafe)</td></tr>
+          <tr><td>Carbon tetrachloride</td><td>CCl₄</td><td>Fire extinguisher, dry cleaning</td></tr>
+          <tr><td>Halothane</td><td>CHBrCl–CF₃</td><td>Safe anesthesia (replaced chloroform)</td></tr>
+          <tr><td>Freon (CFC)</td><td>CF₂Cl₂</td><td>Refrigerant (harmful to ozone)</td></tr>
+          <tr><td>Dichloroethane</td><td>C₂H₄Cl₂</td><td>Lead-free gasoline additive</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ALCOHOLS & ETHERS ══ -->
+    <div class="section" id="sec-alcohols">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(105,240,174,0.1); border:1px solid rgba(105,240,174,0.2);">🍶</div>
+        <div>
+          <h2>Alcohols &amp; Ethers</h2>
+          <p>Hydroxy and ether functional groups</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Alcohols — General</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙ₊₂O &nbsp; or &nbsp; CₙH₂ₙ₊₁OH &nbsp;&nbsp;&nbsp; Functional group: —OH (hydroxyl)</div>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th><th>Type</th></tr>
+          <tr><td>Methanol (wood alcohol)</td><td>CH₃OH</td><td>Primary</td></tr>
+          <tr><td>Ethanol (grain alcohol)</td><td>C₂H₅OH</td><td>Primary</td></tr>
+          <tr><td>2-Propanol (isopropanol)</td><td>CH₃CH(OH)CH₃</td><td>Secondary</td></tr>
+          <tr><td>2-Butanol (sec-butyl alcohol)</td><td>CH₃CH(OH)CH₂CH₃</td><td>Secondary</td></tr>
+          <tr><td>2-Methyl-2-propanol (t-butyl)</td><td>(CH₃)₃COH</td><td>Tertiary</td></tr>
+        </table>
+      </div>
+
+      <div class="topic-card">
+        <h3>Physical Properties of Alcohols</h3>
+        <ul class="chem-list">
+          <li>Boiling point higher than alkanes of similar mass (due to H-bonding)</li>
+          <li>Miscible with water (short chain); decreasing solubility with chain length</li>
+          <li>At temperatures above 65°C → completely soluble in water</li>
+          <li>Alcohols are NEUTRAL (pH = 7)</li>
+        </ul>
+        <div class="key-fact">⭐ Alcohols are NEUTRAL (pH=7) — the H of OH can be released as H⁺ but with such LOW concentration it cannot change color of litmus paper</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Chemical Properties of Alcohols</h3>
+        <p>Reactions depend on 3 parts: R group (whole compound), Carbinol (C—OH), OH group</p>
+        <ul class="chem-list">
+          <li><strong>Acidity test:</strong> React with Na ✓ | React with NaOH ✗ (too weak)</li>
+          <li><strong>Esterification:</strong> Alcohol + Acid → Ester + Water (H₂SO₄ catalyst)</li>
+          <li><strong>Dehydration:</strong> With H₂SO₄ at 180°C → Alkene; at 140°C → Ether</li>
+          <li><strong>Oxidation:</strong> Primary → Aldehyde → Carboxylic Acid; Secondary → Ketone</li>
+          <li><strong>Reaction with HX:</strong> —OH replaced by halogen</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Ethers</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>R—O—R' &nbsp;&nbsp;&nbsp; (two carbon groups linked by oxygen)</div>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th></tr>
+          <tr><td>Diethyl ether</td><td>CH₃CH₂—O—CH₂CH₃</td></tr>
+          <tr><td>Isopropyl methyl ether</td><td>CH₃—O—CH(CH₃)₂</td></tr>
+        </table>
+        <div class="key-fact">⭐ Ethers are isomers of alcohols (same formula CₙH₂ₙ₊₂O but different structure)</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: PHENOLS ══ -->
+    <div class="section" id="sec-phenols">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(244,143,177,0.1); border:1px solid rgba(244,143,177,0.2);">🔴</div>
+        <div>
+          <h2>Phenols</h2>
+          <p>Aromatic hydroxy compounds — Carbolic Acid</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Structure &amp; Properties</h3>
+        <div class="formula-box"><span class="formula-label">Phenol formula</span>C₆H₅OH &nbsp;&nbsp;&nbsp; Boiling Point: 182°C</div>
+        <div class="key-fact">⭐ Phenols are ACIDIC (pH &lt; 7) — NOT neutral like alcohols!<br>The C=O has HIGH electronegativity, making the H easier to release as H⁺ with HIGH concentration → enough to change litmus paper to RED<br>Therefore phenol is called CARBOLIC ACID</div>
+        <ul class="chem-list">
+          <li>Boiling point: 182°C (higher than alcohols of similar mass)</li>
+          <li>Sparingly miscible with water; at 65°C becomes completely soluble</li>
+          <li>Acidic solution (pH &lt; 7) — changes litmus to red</li>
+          <li>React with Na ✓ | React with NaOH ✓ (unlike alcohols!)</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Carbinol Group — Bond Polarity</h3>
+        <p>In the carbinol group (C—O—H):</p>
+        <ul class="chem-list">
+          <li>C side has HIGH electronegativity → Bond is STRONG and SHORT → Difficult to break</li>
+          <li>H side has LOW electronegativity → Bond is LONG and WEAK → Easy to break</li>
+          <li>So H can liberate as H⁺ with HIGH concentration</li>
+        </ul>
+        <div class="key-fact">⭐ In ALCOHOLS: H⁺ released in LOW concentration → NOT enough to change litmus color → NEUTRAL<br>In PHENOLS: H⁺ released in HIGH concentration → Changes litmus to RED → ACIDIC</div>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ALDEHYDES & KETONES ══ -->
+    <div class="section" id="sec-aldehydes">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(255,215,64,0.1); border:1px solid rgba(255,215,64,0.2);">🧫</div>
+        <div>
+          <h2>Aldehydes &amp; Ketones</h2>
+          <p>Carbonyl functional group compounds</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Comparison Table</h3>
+        <table class="chem-table">
+          <tr><th>Property</th><th>Aldehydes</th><th>Ketones</th></tr>
+          <tr><td>Functional group</td><td>—CHO (terminal)</td><td>C=O (internal)</td></tr>
+          <tr><td>General formula</td><td>CₙH₂ₙO</td><td>CₙH₂ₙO</td></tr>
+          <tr><td>From oxidation of</td><td>Primary alcohol</td><td>Secondary alcohol</td></tr>
+          <tr><td>Suffix</td><td>-al</td><td>-one</td></tr>
+          <tr><td>Tollens test</td><td>✓ (silver mirror)</td><td>✗</td></tr>
+          <tr><td>Fehling's solution</td><td>✓ (red ppt)</td><td>✗</td></tr>
+        </table>
+        <div class="key-fact">⭐ Aldehydes are REDUCING AGENTS — they can reduce Tollens' reagent and Fehling's solution. Ketones CANNOT. This is the key test to distinguish them!</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Key Examples</h3>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th><th>Source/Use</th></tr>
+          <tr><td>Methanal (Formaldehyde)</td><td>HCHO</td><td>Preservative (Formalin = 40% solution)</td></tr>
+          <tr><td>Ethanal (Acetaldehyde)</td><td>CH₃CHO</td><td>Oxidation of ethanol</td></tr>
+          <tr><td>Propanone (Acetone)</td><td>CH₃COCH₃</td><td>Solvent (nail polish remover)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: CARBOXYLIC ACIDS ══ -->
+    <div class="section" id="sec-acids">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(239,154,154,0.1); border:1px solid rgba(239,154,154,0.2);">🧪</div>
+        <div>
+          <h2>Carboxylic Acids</h2>
+          <p>Organic acids with —COOH functional group</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Properties</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙO₂ &nbsp; or &nbsp; R—COOH &nbsp;&nbsp;&nbsp; Functional group: —COOH</div>
+        <table class="chem-table">
+          <tr><th>Name</th><th>Formula</th><th>Origin</th></tr>
+          <tr><td>Methanoic acid (Formic)</td><td>HCOOH</td><td>Ants (Formica)</td></tr>
+          <tr><td>Ethanoic acid (Acetic)</td><td>CH₃COOH</td><td>Vinegar (Acetum)</td></tr>
+          <tr><td>Propanoic acid</td><td>C₂H₅COOH</td><td>—</td></tr>
+          <tr><td>Butanoic acid (Butyric)</td><td>C₃H₇COOH</td><td>Rancid butter</td></tr>
+          <tr><td>Stearic acid</td><td>C₁₇H₃₅COOH</td><td>Animal fats (soap)</td></tr>
+          <tr><td>Oleic acid</td><td>C₁₇H₃₃COOH</td><td>Olive oil</td></tr>
+        </table>
+        <div class="key-fact">⭐ Carboxylic acids are ACIDIC (pH &lt; 7) — much more acidic than phenols and alcohols</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Reactions of Carboxylic Acids</h3>
+        <ul class="chem-list">
+          <li><strong>Esterification:</strong> RCOOH + R'OH → RCOOR' + H₂O (H₂SO₄ catalyst)</li>
+          <tr><td>React with Na, NaOH, Na₂CO₃ (unlike alcohols)</td></tr>
+          <li><strong>With Na:</strong> RCOOH + Na → RCOONa + ½H₂</li>
+          <li><strong>With NaOH:</strong> RCOOH + NaOH → RCOONa + H₂O</li>
+          <li><strong>With Na₂CO₃:</strong> 2RCOOH + Na₂CO₃ → 2RCOONa + CO₂ + H₂O</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ESTERS ══ -->
+    <div class="section" id="sec-esters">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(105,240,174,0.1); border:1px solid rgba(105,240,174,0.2);">🌸</div>
+        <div>
+          <h2>Esters</h2>
+          <p>Fragrant compounds — RCOORʼ</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Formation (Esterification)</h3>
+        <div class="formula-box"><span class="formula-label">General formula</span>CₙH₂ₙO₂ &nbsp; (same as carboxylic acids — isomers!)</div>
+        <div class="reaction">
+          RCOOH + R'OH <span class="rxn-arrow">—H₂SO₄/Δ→</span> RCOO-R' + H₂O<br>
+          (Acid + Alcohol → Ester + Water)
+        </div>
+        <div class="key-fact">⭐ Esters and carboxylic acids are ISOMERS — same formula CₙH₂ₙO₂ but different structures</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Saponification (Hydrolysis)</h3>
+        <div class="reaction">
+          RCOOR' + NaOH <span class="rxn-arrow">→</span> RCOONa + R'OH<br>
+          Ester + NaOH → Soap (sodium salt of acid) + Alcohol
+        </div>
+        <p>This is how soap is made — saponification of natural fats and oils with NaOH.</p>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: AMINES ══ -->
+    <div class="section" id="sec-amines">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(206,147,216,0.1); border:1px solid rgba(206,147,216,0.2);">🔵</div>
+        <div>
+          <h2>Amines</h2>
+          <p>Nitrogen-containing organic compounds</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>General Properties</h3>
+        <div class="formula-box"><span class="formula-label">Primary amine formula</span>R—NH₂ &nbsp;&nbsp;&nbsp; Functional group: —NH₂ (amino group)</div>
+        <ul class="chem-list">
+          <li>Amines are BASIC (pH &gt; 7) — due to lone pair on nitrogen</li>
+          <li>Have fishy smell</li>
+          <li>React with acids to form salts</li>
+          <li>Primary: R-NH₂ | Secondary: R₂NH | Tertiary: R₃N</li>
+        </ul>
+        <table class="chem-table">
+          <tr><th>Type</th><th>Example</th><th>Formula</th></tr>
+          <tr><td>Primary amine</td><td>Methylamine</td><td>CH₃NH₂</td></tr>
+          <tr><td>Secondary amine</td><td>Dimethylamine</td><td>(CH₃)₂NH</td></tr>
+          <tr><td>Tertiary amine</td><td>Trimethylamine</td><td>(CH₃)₃N</td></tr>
+          <tr><td>Aromatic amine</td><td>Aniline</td><td>C₆H₅NH₂</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SECTION: ASPIRIN ══ -->
+    <div class="section" id="sec-aspirin">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(239,154,154,0.1); border:1px solid rgba(239,154,154,0.2);">💊</div>
+        <div>
+          <h2>Aspirin ★</h2>
+          <p>Acetylsalicylic acid — a key application of organic chemistry</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Properties &amp; Uses of Aspirin</h3>
+        <div class="formula-box"><span class="formula-label">Chemical name &amp; formula</span>Acetylsalicylic acid &nbsp; C₉H₈O₄</div>
+        <p>Aspirin is used for:</p>
+        <ul class="chem-list">
+          <li>Anti-inflammatory (ضد الالتهاب)</li>
+          <li>Analgesic / Pain killer (مسكن)</li>
+          <li>Anti-coagulant (مضاد تجلط الدم)</li>
+          <li>Anti-pyretic — reduces fever (خافض حرارة)</li>
+          <li>Anti-headache (مسكن صداع)</li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <h3>Aspirin in the Stomach — Acidic Hydrolysis</h3>
+        <div class="reaction">
+          <span class="rxn-label">Hydrolysis Reaction in Stomach</span>
+          Aspirin (C₉H₈O₄) + H₂O <span class="rxn-arrow">—H⁺→</span> Salicylic acid + CH₃COOH<br>
+          (Acetylsalicylic acid + water → Salicylic acid + Acetic acid)
+        </div>
+        <div class="key-fact">⭐ PROBLEM: This reaction INCREASES acidity of stomach → May cause ULCERS or BLEEDING<br><br>SOLUTIONS:<br>1. Take aspirin AFTER MEALS<br>2. Crushing aspirin BEFORE swallowing<br>3. Using COATED aspirin — coated by layers of Al(OH)₃ which decreases the effect by forming Aluminum salts</div>
+      </div>
+
+      <div class="topic-card">
+        <h3>Aspirin Preparation — Esterification</h3>
+        <div class="reaction">
+          Salicylic acid + Acetic anhydride <span class="rxn-arrow">—H₂SO₄→</span> Aspirin + Acetic acid<br>
+          C₇H₆O₃ + C₄H₆O₃ → C₉H₈O₄ + CH₃COOH
+        </div>
+        <p>This is an esterification reaction — the key reaction type for making aspirin in the lab.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function navigate(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  const sec = document.getElementById('sec-' + id);
+  if (sec) sec.classList.add('active');
+  document.querySelectorAll('.sidebar-link').forEach(l => {
+    if (l.getAttribute('onclick') && l.getAttribute('onclick').includes("'" + id + "'")) {
+      l.classList.add('active');
+    }
+  });
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
